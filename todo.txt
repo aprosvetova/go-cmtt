@@ -1,0 +1,77 @@
+@GET("entry/{id}/popular")
+Observable<EntriesResult> entryPopular(@Path("id") int i);
+
+@GET("timeline/mainpage")
+Observable<EntriesResult> hashtag(@Query("hashtag") String str, @Query("count") int i, @Query("offset") int i2);
+
+@GET("layout/{version}")
+Observable<EntryLayoutResult> layout(@Path("version") String str);
+
+@GET("layout/hashtag/{hashtag}")
+Observable<EntryLayoutResult> layoutHashTag(@Path("hashtag") String str);
+
+@GET("timeline/{category}/{mode}")
+Observable<EntriesResult> timeline(@Path("category") String str, @Path("mode") String str2, @Query("count") int i, @Query("offset") int i2);
+
+@GET("user/me/updates?is_read=1")
+Observable<NotificationsResult> userMeUpdates();
+
+@GET("user/me/updates?is_read=1")
+Observable<NotificationsResult> userMeUpdates(@Query("last_id") int i);
+
+@GET("user/me/updates/count")
+Observable<OsnovaResult<Count>> userMeUpdatesCount();
+
+@GET("user/push/settings/get")
+Observable<IntegerResult> userPushSettingsGet();
+
+@FormUrlEncoded
+@POST("entry/attachEmbed")
+Observable<AttachResult> attachEmbed(@Field("url") String str);
+
+@FormUrlEncoded
+@POST("entry/attachLinkUrl")
+Observable<AttachLinkResult> attachLinkUrl(@Field("url") String str);
+
+@FormUrlEncoded
+@POST("auth/social/{type}")
+Observable<UserResult> authSocial(@Path("type") String str, @Field("token") String str2, @Field("email") String str3);
+
+@POST("entry/comments/attach")
+@Multipart
+Observable<AttachResult> entryCommentsAttach(@Part MultipartBody.Part part);
+
+@FormUrlEncoded
+@POST("entry/comments/attachUrl")
+Observable<AttachResult> entryCommentsAttachUrl(@Field("url") String str);
+
+@FormUrlEncoded
+@POST("entry/create")
+Observable<APIResult> entryCreate(@Field("title") String str, @Field("text") String str2, @Field("section_id") int i, @Field("attaches") String str3);
+
+@FormUrlEncoded
+@POST("payments/proceed/android")
+Observable<BooleanResult> paymentsProceedAndroid(@Field("receipt_data") String str);
+
+@FormUrlEncoded
+@POST("user/me/favorites")
+Observable<FavoriteResult> userMeFavoritesAdd(@Field("id") int i, @Field("type") int i2);
+
+@FormUrlEncoded
+@POST("user/me/favorites/remove")
+Observable<FavoriteResult> userMeFavoritesRemove(@Field("id") int i, @Field("type") int i2);
+
+@FormUrlEncoded
+@POST("user/me/updates/read")
+Observable<NotificationsResult> userMeUpdatesRead();
+
+@POST("user/me/updates/read/{id}")
+Observable<NotificationsResult> userMeUpdatesReadId(@Path("id") String str);
+
+@FormUrlEncoded
+@POST("user/me/updates/read")
+Observable<NotificationsResult> userMeUpdatesReadIds(@Field("ids") String str);
+
+@FormUrlEncoded
+@POST("user/push/settings/update")
+Observable<OsnovaResult> userPushSettingsUpdate(@Field("settings") String str);
